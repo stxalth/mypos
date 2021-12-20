@@ -8,4 +8,38 @@ class Auth extends CI_Controller
     {
         $this->load->view('login');
     }
+    public function process()
+    {
+        $post = $this->input->post(null, TRUE);
+        if (isset($post['login'])) {
+            $this->load->model('user_m'); //harus di-load biar ga error
+            $query = $this->user_m->login($post);
+            //kondisi ketika benar, maka session akan diproses, lalu masuk ke dashboard
+
+            if ($query->num_rows() > 0) {
+                //membuat session dengan mengambil array dari database
+                $row = $query->row();
+                $params = array(
+                    //nama isi dari $row harus sesuai dengan yang di database
+                    'userid' => $row->user_id, // sesuai
+                    'level' => $row->level,    // sesuai
+                );
+                //mencetak session
+                $this->session->set_userdata($params);
+
+                //directing
+                echo "<script>
+                    alert('Login berhasil!');
+                    window.location='" . site_url('dashboard') . "';
+                </script>";
+
+                //ketika salah, maka session tidak perlu dicetak dan kembali ke page login
+            } else {
+                echo "<script>
+                    alert('Username / Password salah');
+                    window.location='" . site_url('auth/login') . "';
+                </script>";
+            }
+        }
+    }
 }
