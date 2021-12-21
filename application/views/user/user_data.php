@@ -42,12 +42,17 @@
                             <td><?= $data->address ?></td>
                             <td><?= $data->level == 1 ? "Admin" : "Kasir" ?></td>
                             <td class="text-center" width="160px">
-                                <a href="<?= site_url('user/edit') ?>" class="btn btn-primary btn-xs">
-                                    <i class="fa fa-pencil"> Update</i>
-                                </a>
-                                <a href="<?= site_url('user/edit') ?>" class="btn btn-danger btn-xs">
-                                    <i class="fa fa-trash"> Hapus</i>
-                                </a>
+                                <form action="<?= site_url('user/del') ?>" method="post">
+                                    <a href="<?= site_url('user/edit/' . $data->user_id) ?>" class="btn btn-primary btn-xs">
+                                        <i class="fa fa-pencil"> Update</i>
+                                    </a>
+
+                                    <input type="hidden" name="user_id" value="<?= $data->user_id ?>">
+                                    <button onclick="return confirm('Yakin ingin menghapus?')" class="btn btn-danger btn-xs">
+                                        <i class="fa fa-trash"> Hapus</i>
+                                    </button>
+
+                                </form>
                             </td>
                         </tr>
                     <?php } ?>
