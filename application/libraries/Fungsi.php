@@ -9,7 +9,7 @@ class Fungsi
         $this->ci = &get_instance();
     }
 
-    //untuk menampilkan info user
+    //untuk menampilkan data user sesuai id
     function user_login()
     {
         $this->ci->load->model('user_m');
