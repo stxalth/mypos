@@ -125,7 +125,7 @@
                         <a href="<?= site_url('dashboard') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-truck"></i> <span>Supplier</span></a>
+                        <a href="<?= site_url('supplier') ?>"><i class="fa fa-truck"></i> <span>Supplier</span></a>
                     </li>
                     <li>
                         <a href=""><i class="fa fa-users"></i> <span>Customers</span></a>
