@@ -16,7 +16,7 @@
             <h3 class="box-title">Data Suppliers</h3>
             <div class="pull-right">
                 <a href="<?= site_url('supplier/add') ?>" class="btn btn-primary">
-                    <i class="fa fa-user-plus"> Buat</i>
+                    <i class="fa fa-plus"> Buat</i>
                 </a>
             </div>
         </div>
@@ -46,9 +46,13 @@
                             <td><?= $data->created ?></td>
                             <td><?= $data->updated ?></td>
                             <td class="text-center" width="160px">
+                                <a href="<?= site_url('supplier/edit/' . $data->supplier_id) ?>" class="btn btn-primary btn-xs">
+                                    <i class="fa fa-pencil"> Update</i>
+                                </a>
                                 <a href="<?= site_url('supplier/del/' . $data->supplier_id) ?>" onclick="return confirm('Yakin ingin menghapus?')" class="btn btn-danger btn-xs">
                                     <i class="fa fa-trash"> Hapus</i>
                                 </a>
+
                             </td>
                         </tr>
                     <?php } ?>
