@@ -1,11 +1,11 @@
 <section class="content-header">
     <h1>
-        Customers
-        <small>Pelanggan</small>
+        Categories
+        <small>Kategori Barang</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i></a></li>
-        <li class="active">Customers</li>
+        <li class="active">Categories</li>
     </ol>
 </section>
 
@@ -14,9 +14,9 @@
     <?php $this->view('message') ?>
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Data Customers</h3>
+            <h3 class="box-title">Data Categories</h3>
             <div class="pull-right">
-                <a href="<?= site_url('customer/add') ?>" class="btn btn-primary">
+                <a href="<?= site_url('category/add') ?>" class="btn btn-primary">
                     <i class="fa fa-plus"> Buat</i>
                 </a>
             </div>
@@ -27,9 +27,6 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Gender</th>
-                        <th>Phone</th>
-                        <th>Address</th>
                         <th>Created</th>
                         <th>Updated</th>
                         <th>Actions</th>
@@ -41,16 +38,13 @@
                         <tr>
                             <td style="width:5%;"><?= $no++ ?>.</td>
                             <td><?= $data->name ?></td>
-                            <td><?= $data->gender ?></td>
-                            <td><?= $data->phone ?></td>
-                            <td><?= $data->address ?></td>
                             <td><?= $data->created ?></td>
                             <td><?= $data->updated ?></td>
                             <td class="text-center" width="160px">
-                                <a href="<?= site_url('customer/edit/' . $data->customer_id) ?>" class="btn btn-primary btn-xs">
+                                <a href="<?= site_url('category/edit/' . $data->category_id) ?>" class="btn btn-primary btn-xs">
                                     <i class="fa fa-pencil"> Update</i>
                                 </a>
-                                <a href="<?= site_url('customer/del/' . $data->customer_id) ?>" onclick="return confirm('Yakin ingin menghapus?')" class="btn btn-danger btn-xs">
+                                <a href="<?= site_url('category/del/' . $data->category_id) ?>" onclick="return confirm('Yakin ingin menghapus?')" class="btn btn-danger btn-xs">
                                     <i class="fa fa-trash"> Hapus</i>
                                 </a>
 

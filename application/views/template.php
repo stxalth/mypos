@@ -139,8 +139,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Categories</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Units</a></li>
+                            <li><a href="<?= site_url('category') ?>"><i class="fa fa-circle-o"></i> Categories</a></li>
+                            <li><a href="<?= site_url('unit') ?>"><i class="fa fa-circle-o"></i> Units</a></li>
                             <li><a href="#"><i class="fa fa-circle-o"></i> Items</a></li>
                         </ul>
                     </li>

@@ -11,6 +11,7 @@
 
 <!-- Main content -->
 <section class="content">
+    <?php $this->view('message') ?>
     <div class="box">
         <div class="box-header">
             <h3 class="box-title">Data Suppliers</h3>
@@ -38,7 +39,7 @@
                     <?php $no = 1;
                     foreach ($row->result() as $key => $data) { ?>
                         <tr>
-                            <td><?= $no++ ?>.</td>
+                            <td style="width:5%;"><?= $no++ ?>.</td>
                             <td><?= $data->name ?></td>
                             <td><?= $data->phone ?></td>
                             <td><?= $data->address ?></td>
