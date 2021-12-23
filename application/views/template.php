@@ -128,7 +128,7 @@
                         <a href="<?= site_url('supplier') ?>"><i class="fa fa-truck"></i> <span>Supplier</span></a>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-users"></i> <span>Customers</span></a>
+                        <a href="<?= site_url('customer') ?>"><i class="fa fa-users"></i> <span>Customers</span></a>
                     </li>
                     <li class="treeview">
                         <a href="#">
