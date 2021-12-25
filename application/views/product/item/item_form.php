@@ -11,6 +11,7 @@
 
 <!-- Main content -->
 <section class="content">
+    <?php $this->view('message') ?>
     <div class="box">
         <div class="box-header">
             <h3 class="box-title"><?= ucfirst($page) ?> item</h3>
