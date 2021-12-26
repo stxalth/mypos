@@ -24,55 +24,69 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <form action="<?= site_url('item/process') ?>" method="post">
-                        <div class="form-group">
-                            <label>Barcode *</label>
-                            <!-- untuk yang input type hidden name id ini digunakan untuk input bagian id -->
-                            <input type="hidden" name="id" value="<?= $row->item_id ?>">
-                            <input type="text" name="barcode" value="<?= $row->barcode ?>" class="form-control" required>
-                        </div>
+                    <?php echo form_open_multipart('item/process'); ?>
+                    <div class="form-group">
+                        <label>Barcode *</label>
+                        <!-- untuk yang input type hidden name id ini digunakan untuk input bagian id -->
+                        <input type="hidden" name="id" value="<?= $row->item_id ?>">
+                        <input type="text" name="barcode" value="<?= $row->barcode ?>" class="form-control" required>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="product_name">Product Name *</label>
-                            <input type="text" name="product_name" id="product_name" value="<?= $row->name ?>" class="form-control" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="product_name">Product Name *</label>
+                        <input type="text" name="product_name" id="product_name" value="<?= $row->name ?>" class="form-control" required>
+                    </div>
 
-                        <!-- Berikut ini adalah salah satu cara untuk bikin dropdown dengan looping data -->
-                        <!-- Hubungannya tetep sama Item.php -->
-                        <!-- Di sana udah ada pemanggilan model dan pengambilan datanya -->
-                        <div class="form-group">
-                            <label>Category *</label>
-                            <select name="category" class="form-control" required>
-                                <option value="">-- Pilih --</option>
-                                <?php foreach ($category->result() as $key => $data) { ?>
-                                    <option value="<?= $data->category_id ?>" <?= $data->category_id == $row->category_id ? 'selected' : null ?>><?= $data->name ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
+                    <!-- Berikut ini adalah salah satu cara untuk bikin dropdown dengan looping data -->
+                    <!-- Hubungannya tetep sama Item.php -->
+                    <!-- Di sana udah ada pemanggilan model dan pengambilan datanya -->
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select name="category" class="form-control" required>
+                            <option value="">-- Pilih --</option>
+                            <?php foreach ($category->result() as $key => $data) { ?>
+                                <option value="<?= $data->category_id ?>" <?= $data->category_id == $row->category_id ? 'selected' : null ?>><?= $data->name ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
 
-                        <!-- Nah, jadi di sini tinggal echo aja, gausah bikin <select> -->
-                        <!-- Karena loopingnya udah ada di Item.php, di sini tinggal panggil aja yg di bagian $data = array() -->
-                        <!-- tinggal panggil deh yg bagian unit -->
-                        <div class="form-group">
-                            <label>Unit *</label>
-                            <?php echo form_dropdown(
-                                'unit',
-                                $unit,
-                                $selectedunit,
-                                ['class' => 'form-control', 'required' => 'required']
-                            ) ?>
-                        </div>
+                    <!-- Nah, jadi di sini tinggal echo aja, gausah bikin <select> -->
+                    <!-- Karena loopingnya udah ada di Item.php, di sini tinggal panggil aja yg di bagian $data = array() -->
+                    <!-- tinggal panggil deh yg bagian unit -->
+                    <div class="form-group">
+                        <label>Unit *</label>
+                        <?php echo form_dropdown(
+                            'unit',
+                            $unit,
+                            $selectedunit,
+                            ['class' => 'form-control', 'required' => 'required']
+                        ) ?>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Price *</label>
-                            <input type="number" name="price" value="<?= $row->price ?>" class="form-control" required>
-                        </div>
+                    <div class="form-group">
+                        <label>Price *</label>
+                        <input type="number" name="price" value="<?= $row->price ?>" class="form-control" required>
+                    </div>
 
-                        <div class="form-group">
-                            <button type="submit" name="<?= $page ?>" class="btn btn-success btn-flat"><i class="fa fa-paper-plane"> Save</i></button>
-                            <button type="reset" class="btn btn-flat">Reset</button>
-                        </div>
-                    </form>
+                    <div class="form-group">
+                        <label>Gambar</label>
+                        <?php if ($page == 'edit') {
+                            if ($row->image != null) { ?>
+                                <div style="margin-bottom:5px;">
+                                    <img src="<?= base_url('uploads/product/' . $row->image)  ?>" style="width:80%;">
+                                </div>
+                        <?php
+                            }
+                        } ?>
+                        <input type="file" name="image" class="form-control">
+                        <small>(Biarkan kosong jika tidak ada <?= $page == 'edit' ? 'diganti' : 'ada' ?>)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" name="<?= $page ?>" class="btn btn-success btn-flat"><i class="fa fa-paper-plane"> Save</i></button>
+                        <button type="reset" class="btn btn-flat">Reset</button>
+                    </div>
+                    <?php echo form_close() ?>
                 </div>
             </div>
         </div>

@@ -31,6 +31,7 @@
                         <th>Category</th>
                         <th>Unit</th>
                         <th>Price</th>
+                        <th>Gambar</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -44,6 +45,11 @@
                             <td><?= $data->category_name ?></td>
                             <td><?= $data->unit_name ?></td>
                             <td><?= $data->price ?></td>
+                            <td>
+                                <?php if ($data->image != null) { ?>
+                                    <img src="<?= base_url('uploads/product/' . $data->image)  ?>" style="width: 50px">
+                                <?php } ?>
+                            </td>
                             <td class="text-center" width="160px">
                                 <a href="<?= site_url('item/edit/' . $data->item_id) ?>" class="btn btn-primary btn-xs">
                                     <i class="fa fa-pencil"> Update</i>
