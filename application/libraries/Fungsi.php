@@ -17,4 +17,18 @@ class Fungsi
         $user_data = $this->ci->user_m->get($user_id)->row();
         return $user_data;
     }
+
+    function PdfGenerator($html, $filename, $paper, $orientation)
+    {
+        $options = new Dompdf\Options();
+        $options->setDefaultFont('courier');
+        $options->setIsRemoteEnabled(true);
+
+        $dompdf = new Dompdf\Dompdf();
+        $dompdf->setOptions($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper($paper, $orientation);
+        $dompdf->render();
+        $dompdf->stream($filename, array('Attachment' => 0));
+    }
 }

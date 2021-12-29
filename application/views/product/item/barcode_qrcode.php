@@ -27,6 +27,10 @@
             ?>
             <br>
             <?= $row->barcode ?>
+            <br></br>
+            <a href="<?= site_url('item/barcode_print/' . $row->item_id) ?>" target="_blank" class="btn btn-default btn-sm">
+                <i class="fa fa-print"> Print</i>
+            </a>
         </div>
     </div>
 
@@ -55,6 +59,10 @@
             <img src="<?= base_url('uploads/qr-code/item-' . $row->item_id . '.png') ?>" style="width: 200px;">
             <br>
             <?= $row->barcode ?>
+            <br></br>
+            <a href="<?= site_url('item/qrcode_print/' . $row->item_id) ?>" target="_blank" class="btn btn-default btn-sm">
+                <i class="fa fa-print"> Print</i>
+            </a>
         </div>
     </div>
 
