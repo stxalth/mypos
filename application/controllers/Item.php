@@ -167,4 +167,10 @@ class Item extends CI_Controller
         }
         redirect('item');
     }
+
+    function barcode_qrcode($id)
+    {
+        $data['row'] = $this->item_m->get($id)->row();
+        $this->template->load('template', 'product/item/barcode_qrcode', $data);
+    }
 }
